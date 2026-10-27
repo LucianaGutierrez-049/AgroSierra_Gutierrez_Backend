@@ -38,3 +38,5 @@ build/
 *.trace.db
 *.log
 /.kotlin/
+
+.env

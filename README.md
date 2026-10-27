@@ -48,3 +48,8 @@ Etiqueta v1.0-unidad2 solo cuando el producto haya sido evaluado/verificado.
 ## Repositorio
 
 https://github.com/LucianaGutierrez-049/AgroSierra_Gutierrez_Backend.git
+
+## Postman y Docker
+
+Consultar [instrucciones](docs/POSTMAN_Y_DOCKER.md).
+Oracle aislado en el puerto 1523; API en 8081.
