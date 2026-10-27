@@ -8,7 +8,7 @@ Desde esta carpeta: `./mvnw.cmd spring-boot:run` (PowerShell).
 Escucha en http://localhost:8081; evita colisionar con PharmaSoft en 8080.
 La configuración predeterminada usa H2 **persistente en disco**, con migraciones y datos semilla reales.
 Oracle 23+ se habilita con el perfil `oracle` y las variables DB_URL, DB_USER y DB_PASSWORD.
-No se reutiliza ni modifica PHARMADB. El perfil Oracle requiere validar las migraciones en la instancia elegida.
+No se reutiliza ni modifica PHARMADB. El perfil Oracle fue verificado en Oracle Free 23.26.1, puerto 1522.
 JWT_SECRET puede reemplazar la clave exclusiva de desarrollo local. No publicar con la clave de ejemplo.
 
 ## Contrato
@@ -52,4 +52,8 @@ https://github.com/LucianaGutierrez-049/AgroSierra_Gutierrez_Backend.git
 ## Postman y Docker
 
 Consultar [instrucciones](docs/POSTMAN_Y_DOCKER.md).
-Oracle aislado en el puerto 1523; API en 8081.
+Oracle aislado en el puerto 1522; API en 8081.
+
+## Oracle comprobado
+
+[Resultados de ejecución](docs/BACKEND_ORACLE_VERIFICADO.md).

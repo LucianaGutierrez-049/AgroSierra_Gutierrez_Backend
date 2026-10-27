@@ -1,10 +1,10 @@
 name: agrosierra-gutierrez
 services:
   oracle:
-    image: gvenzl/oracle-free:23-slim
+    image: gvenzl/oracle-free:23.26.1-slim-faststart
     container_name: agrosierra-oracle
     ports:
-      - "127.0.0.1:1523:1521"
+      - "127.0.0.1:1522:1521"
     environment:
       ORACLE_PASSWORD: ${ORACLE_PASSWORD:-AgroOracle2026_Dev}
       APP_USER: AGRODB

@@ -22,7 +22,7 @@ docker compose logs -f api
 El primer inicio descarga imágenes y puede tardar varios minutos. El servicio API espera
 el healthcheck de Oracle. Flyway crea las tablas; no se crean manualmente en Postman ni DBeaver.
 
-Oracle: localhost:1523, servicio FREEPDB1, usuario AGRODB.
+Oracle: localhost:1522, servicio FREEPDB1, usuario AGRODB.
 Contraseña local de ejemplo: AgroDb2026_Dev (o DB_PASSWORD en .env).
 API: localhost:8081. El emulador usa 10.0.2.2:8081.
 Volumen persistente: oracle-data. No ejecutar `down -v` si se desean conservar los datos.
@@ -33,10 +33,9 @@ con el perfil `oracle`. El perfil local predeterminado continúa usando H2.
 
 ## Estado de validación
 
-Backend y aplicación tienen compilación/pruebas verificadas con H2.
-La instalación del APK y su arranque se comprobaron con ADB.
-La configuración Oracle/Docker se entrega separada; no se debe dar por probada su ejecución
-hasta observar ambos servicios activos y repetir la colección de Postman contra Oracle.
+Oracle en Docker y AgroAPI ejecutado con Java están verificados.
+Consultar [resultados y pasos reproducibles](BACKEND_ORACLE_VERIFICADO.md).
+El contenedor del servicio API completo todavía se comprueba por separado.
 
 Documentación de la imagen: https://hub.docker.com/r/gvenzl/oracle-free
 Orden de inicio: https://docs.docker.com/compose/how-tos/startup-order/
