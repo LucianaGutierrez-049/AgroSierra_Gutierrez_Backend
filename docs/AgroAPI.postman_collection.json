@@ -1,30 +1,27 @@
 {
-  "info": {
-    "name": "AgroSierra Gutierrez · API y seguridad",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:8081/api/v1"
-    },
-    {
-      "key": "tokenAlterado",
-      "value": "token-invalido"
-    }
-  ],
   "item": [
     {
+      "id": "a222e116-fbe2-442c-9095-855abd64e3de",
       "name": "Login Técnico",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "auth",
+            "login"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Content-Type",
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/auth/login",
+        "method": "POST",
         "body": {
           "mode": "raw",
           "raw": "{\n  \"usuario\": \"tecnico1\",\n  \"contrasena\": \"Agro2026*\"\n}",
@@ -35,31 +32,87 @@
           }
         }
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"tecnico1\",\n  \"contrasena\": \"Agro2026*\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"token\": \"<token omitido>\",\n  \"usuario\": \"tecnico1\",\n  \"nombre\": \"Lucía · Técnica de campo\",\n  \"rol\": \"TECNICO\",\n  \"privilegios\": [\n    \"LABOR_EDITAR\",\n    \"LOTE_LEER\",\n    \"LABOR_CREAR\",\n    \"LABOR_LEER\"\n  ],\n  \"usuarioId\": 4,\n  \"expiraEn\": 1793153464000,\n  \"edicionPropia\": true\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "b90ccf6b-d10a-4d7c-b926-62b815a29863",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
               "pm.collectionVariables.set(\"tokenTecnico\", pm.response.json().token);"
-            ]
+            ],
+            "_lastExecutionId": "3143263a-504a-4ff3-ba69-1c15e8249bce"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "d7e9c1e5-93ed-48c7-ad37-2171a794e916",
       "name": "Login Jefe",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "auth",
+            "login"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Content-Type",
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/auth/login",
+        "method": "POST",
         "body": {
           "mode": "raw",
           "raw": "{\n  \"usuario\": \"jefe1\",\n  \"contrasena\": \"Agro2026*\"\n}",
@@ -70,31 +123,87 @@
           }
         }
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"jefe1\",\n  \"contrasena\": \"Agro2026*\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"token\": \"<token omitido>\",\n  \"usuario\": \"jefe1\",\n  \"nombre\": \"Jefatura de campo\",\n  \"rol\": \"JEFE_CAMPO\",\n  \"privilegios\": [\n    \"LABOR_EDITAR\",\n    \"LABOR_ELIMINAR\",\n    \"LOTE_LEER\",\n    \"LABOR_CREAR\",\n    \"LABOR_LEER\",\n    \"CAMPANIA_CERRAR\"\n  ],\n  \"usuarioId\": 5,\n  \"expiraEn\": 1793153464000,\n  \"edicionPropia\": false\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "278ef0e5-ffc9-4c80-870a-5ec2e5458a56",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
               "pm.collectionVariables.set(\"tokenJefe\", pm.response.json().token);"
-            ]
+            ],
+            "_lastExecutionId": "0b67e9e7-6c46-411c-8289-9ebc22040acb"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "b09d2623-62c5-49e3-84f5-7f4bc4cbb175",
       "name": "Login Administrador",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "auth",
+            "login"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Content-Type",
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/auth/login",
+        "method": "POST",
         "body": {
           "mode": "raw",
           "raw": "{\n  \"usuario\": \"admin\",\n  \"contrasena\": \"Agro2026*\"\n}",
@@ -105,106 +214,344 @@
           }
         }
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"admin\",\n  \"contrasena\": \"Agro2026*\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"token\": \"<token omitido>\",\n  \"usuario\": \"admin\",\n  \"nombre\": \"Administración AgroSierra\",\n  \"rol\": \"ADMINISTRADOR\",\n  \"privilegios\": [\n    \"LOTE_LEER\",\n    \"LABOR_LEER\",\n    \"USUARIO_GESTIONAR\"\n  ],\n  \"usuarioId\": 6,\n  \"expiraEn\": 1793153465000,\n  \"edicionPropia\": false\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "a1988350-b945-43e9-8652-88167144112c",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
               "pm.collectionVariables.set(\"tokenAdmin\", pm.response.json().token);"
-            ]
+            ],
+            "_lastExecutionId": "f9fe512a-b652-4363-a30c-d2aef015e106"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "bcaa0f96-4976-4fd2-8f85-6506bbc02aaf",
       "name": "401 · sin token",
       "request": {
-        "method": "GET",
-        "header": [],
-        "url": "{{baseUrl}}/lotes"
+        "url": {
+          "path": [
+            "lotes"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET"
       },
+      "response": [
+        {
+          "name": "HTTP 401 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-27T20:11:05.502074400\",\n  \"status\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"La sesión no es válida o ha vencido\",\n  \"path\": \"/api/v1/lotes\",\n  \"validationErrors\": {}\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "eb5f241d-2a90-4a67-bc84-514e57a31dad",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 401\", function () { pm.response.to.have.status(401); });"
-            ]
+            ],
+            "_lastExecutionId": "e9f5cd14-21a0-4f96-8722-6bea84c27a48"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "c2c42309-06b5-45e2-8de1-737927ddf255",
       "name": "401 · token alterado",
       "request": {
-        "method": "GET",
+        "url": {
+          "path": [
+            "lotes"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenAlterado}}"
           }
         ],
-        "url": "{{baseUrl}}/lotes"
+        "method": "GET"
       },
+      "response": [
+        {
+          "name": "HTTP 401 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenAlterado}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-27T20:11:05.609681900\",\n  \"status\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"La sesión no es válida o ha vencido\",\n  \"path\": \"/api/v1/lotes\",\n  \"validationErrors\": {}\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "35471f80-e8e7-4348-a33b-d5587817ae17",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 401\", function () { pm.response.to.have.status(401); });"
-            ]
+            ],
+            "_lastExecutionId": "90eade29-2e26-44d4-9146-cf1f829e1454"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "d62663ac-021f-45ba-bde2-4dd886fd13ac",
       "name": "Usuario actual",
       "request": {
-        "method": "GET",
+        "url": {
+          "path": [
+            "usuarios",
+            "me"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenTecnico}}"
           }
         ],
-        "url": "{{baseUrl}}/usuarios/me"
+        "method": "GET"
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "usuarios",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 4,\n  \"usuario\": \"tecnico1\",\n  \"nombre\": \"Lucía · Técnica de campo\",\n  \"rol\": \"TECNICO\",\n  \"privilegios\": [\n    \"LABOR_EDITAR\",\n    \"LOTE_LEER\",\n    \"LABOR_CREAR\",\n    \"LABOR_LEER\"\n  ]\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "5522f953-8236-48a1-8f1f-ccfa8a464c8b",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
-            ]
+            ],
+            "_lastExecutionId": "8e7d2cd4-e9df-4b22-95e6-8ce014684fc0"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "6144a1c2-39c9-415c-8f8c-1dc2785fd87a",
       "name": "Lotes paginados",
       "request": {
-        "method": "GET",
+        "url": {
+          "path": [
+            "lotes"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "pagina",
+              "value": "0"
+            },
+            {
+              "key": "tamanio",
+              "value": "100"
+            }
+          ],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenTecnico}}"
           }
         ],
-        "url": "{{baseUrl}}/lotes?pagina=0&tamanio=100"
+        "method": "GET"
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "0"
+                },
+                {
+                  "key": "tamanio",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"contenido\": [\n    {\n      \"id\": 2,\n      \"codigo\": \"LOT-001\",\n      \"nombre\": \"Las Palmeras\",\n      \"hectareas\": 2.0,\n      \"cultivo\": \"Papa\",\n      \"valle\": \"Mantaro\",\n      \"campaniaCerrada\": false,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 3,\n      \"codigo\": \"LOT-002\",\n      \"nombre\": \"El Mirador\",\n      \"hectareas\": 2.5,\n      \"cultivo\": \"Maíz\",\n      \"valle\": \"Urubamba\",\n      \"campaniaCerrada\": false,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 4,\n      \"codigo\": \"LOT-003\",\n      \"nombre\": \"Los Eucaliptos\",\n      \"hectareas\": 3.0,\n      \"cultivo\": \"Quinua\",\n      \"valle\": \"Colca\",\n      \"campaniaCerrada\": false,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 5,\n      \"codigo\": \"LOT-004\",\n      \"nombre\": \"La Esperanza\",\n      \"hectareas\": 3.5,\n      \"cultivo\": \"Haba\",\n      \"valle\": \"Mantaro\",\n      \"campaniaCerrada\": false,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 6,\n      \"codigo\": \"LOT-005\",\n      \"nombre\": \"Valle Verde\",\n      \"hectareas\": 4.0,\n      \"cultivo\": \"Papa\",\n      \"valle\": \"Urubamba\",\n      \"campaniaCerrada\": false,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 7,\n      \"codigo\": \"LOT-006\",\n      \"nombre\": \"Los Pinos\",\n      \"hectareas\": 4.5,\n      \"cultivo\": \"Maíz\",\n      \"valle\": \"Colca\",\n      \"campaniaCerrada\": false,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 8,\n      \"codigo\": \"LOT-007\",\n      \"nombre\": \"El Retiro\",\n      \"hectareas\": 5.0,\n      \"cultivo\": \"Quinua\",\n      \"valle\": \"Mantaro\",\n      \"campaniaCerrada\": true,\n      \"dosisMaximaPorHectarea\": 2.5\n    },\n    {\n      \"id\": 9,\n      \"codigo\": \"LOT-008\",\n      \"nombre\": \"Santa Rosa\",\n      \"hectareas\": 5.5,\n      \"cultivo\": \"Haba\",\n      \"valle\": \"Urubamba\",\n      \"campaniaCerrada\": true,\n      \"dosisMaximaPorHectarea\": 2.5\n    }\n  ],\n  \"pagina\": 0,\n  \"tamanio\": 100,\n  \"totalElementos\": 8,\n  \"totalPaginas\": 1,\n  \"ultima\": true\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "d740713c-d10b-416e-8cb3-af25c4323337",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
@@ -213,91 +560,264 @@
               "const sinCosecha = lotes.find(l => l.codigo === \"LOT-002\");",
               "if (abierto) pm.collectionVariables.set(\"loteId\", abierto.id);",
               "if (sinCosecha) pm.collectionVariables.set(\"loteSinCosechaId\", sinCosecha.id);"
-            ]
+            ],
+            "_lastExecutionId": "2ae5156c-feac-4b5c-a898-8edad744f2a0"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "b9d59d07-2f27-48ee-95ed-17ff80794364",
       "name": "Detalle lote",
       "request": {
-        "method": "GET",
+        "url": {
+          "path": [
+            "lotes",
+            "{{loteId}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenTecnico}}"
           }
         ],
-        "url": "{{baseUrl}}/lotes/{{loteId}}"
+        "method": "GET"
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes",
+                "{{loteId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 2,\n  \"codigo\": \"LOT-001\",\n  \"nombre\": \"Las Palmeras\",\n  \"hectareas\": 2.0,\n  \"cultivo\": \"Papa\",\n  \"valle\": \"Mantaro\",\n  \"campaniaCerrada\": false,\n  \"dosisMaximaPorHectarea\": 2.5\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "254dbeca-a42a-4e7a-9a37-fc80b59745ff",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
-            ]
+            ],
+            "_lastExecutionId": "0cc0285e-9258-477f-a38d-25cd80fb6e79"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "980f492d-9f49-47e4-92cf-eaef46926b34",
       "name": "Labores lote",
       "request": {
-        "method": "GET",
+        "url": {
+          "path": [
+            "lotes",
+            "{{loteId}}",
+            "labores"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "pagina",
+              "value": "0"
+            },
+            {
+              "key": "tamanio",
+              "value": "20"
+            }
+          ],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenTecnico}}"
           }
         ],
-        "url": "{{baseUrl}}/lotes/{{loteId}}/labores?pagina=0&tamanio=20"
+        "method": "GET"
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes",
+                "{{loteId}}",
+                "labores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "0"
+                },
+                {
+                  "key": "tamanio",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"contenido\": [\n    {\n      \"id\": 41,\n      \"loteId\": 2,\n      \"tipo\": \"RIEGO\",\n      \"fecha\": \"2026-10-28\",\n      \"responsable\": \"Lucía · Técnica de campo\",\n      \"cantidad\": 1.0,\n      \"observacion\": \"Evidencia offline Gutierrez 2026\",\n      \"pendiente\": false,\n      \"autorId\": 4,\n      \"registradoEn\": \"2026-10-28T01:06:05.051479\"\n    },\n    {\n      \"id\": 4,\n      \"loteId\": 2,\n      \"tipo\": \"RIEGO\",\n      \"fecha\": \"2026-10-27\",\n      \"responsable\": \"Lucía · Técnica de campo\",\n      \"cantidad\": 10.0,\n      \"observacion\": \"Labor de campaña registrada en Las Palmeras\",\n      \"pendiente\": false,\n      \"autorId\": 4,\n      \"registradoEn\": \"2026-10-27T21:05:30.822192\"\n    },\n    {\n      \"id\": 5,\n      \"loteId\": 2,\n      \"tipo\": \"FUMIGACION\",\n      \"fecha\": \"2026-10-26\",\n      \"responsable\": \"Jefatura de campo\",\n      \"cantidad\": 2.0,\n      \"observacion\": \"Labor de campaña registrada en Las Palmeras\",\n      \"pendiente\": false,\n      \"autorId\": 5,\n      \"registradoEn\": \"2026-10-27T21:05:33.229529\"\n    },\n    {\n      \"id\": 6,\n      \"loteId\": 2,\n      \"tipo\": \"COSECHA\",\n      \"fecha\": \"2026-10-25\",\n      \"responsable\": \"Lucía · Técnica de campo\",\n      \"cantidad\": 10.0,\n      \"observacion\": \"Labor de campaña registrada en Las Palmeras\",\n      \"pendiente\": false,\n      \"autorId\": 4,\n      \"registradoEn\": \"2026-10-27T21:05:35.807183\"\n    }\n  ],\n  \"pagina\": 0,\n  \"tamanio\": 20,\n  \"totalElementos\": 4,\n  \"totalPaginas\": 1,\n  \"ultima\": true\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "3a57e16d-641d-45d0-955e-260e3b8b4207",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
-            ]
+            ],
+            "_lastExecutionId": "d069e496-12aa-4855-847a-eca322c4d313"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "a490c2f0-d415-402d-9fb1-af16a6e5abcb",
       "name": "403 · técnico intenta cerrar campaña",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "lotes",
+            "{{loteSinCosechaId}}",
+            "cerrar-campania"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenTecnico}}"
           }
         ],
-        "url": "{{baseUrl}}/lotes/{{loteSinCosechaId}}/cerrar-campania"
+        "method": "POST"
       },
+      "response": [
+        {
+          "name": "HTTP 403 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes",
+                "{{loteSinCosechaId}}",
+                "cerrar-campania"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              }
+            ],
+            "method": "POST"
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-27T20:11:06.291377500\",\n  \"status\": 403,\n  \"error\": \"Forbidden\",\n  \"message\": \"No tienes el privilegio necesario\",\n  \"path\": \"/api/v1/lotes/3/cerrar-campania\",\n  \"validationErrors\": {}\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "57ea3000-b420-412c-b415-2665dff27c4b",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 403\", function () { pm.response.to.have.status(403); });"
-            ]
+            ],
+            "_lastExecutionId": "9f40cd4a-d352-46e1-a625-b0f6197bda42"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "7e3a57c5-d9f5-4004-8d1a-9242e8322c61",
       "name": "400 · dosis excedida",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "labores"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
@@ -308,7 +828,7 @@
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/labores",
+        "method": "POST",
         "body": {
           "mode": "raw",
           "raw": "{\n  \"loteId\": {{loteId}},\n  \"tipo\": \"FUMIGACION\",\n  \"fecha\": \"2026-10-27\",\n  \"cantidad\": 9999,\n  \"observacion\": \"Validación de dosis\"\n}",
@@ -319,48 +839,155 @@
           }
         }
       },
+      "response": [
+        {
+          "name": "HTTP 400 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "labores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loteId\": {{loteId}},\n  \"tipo\": \"FUMIGACION\",\n  \"fecha\": \"2026-10-27\",\n  \"cantidad\": 9999,\n  \"observacion\": \"Validación de dosis\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-27T20:11:06.644610700\",\n  \"status\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"La fumigación supera la dosis permitida\",\n  \"path\": \"/api/v1/labores\",\n  \"validationErrors\": {\n    \"cantidad\": \"La cantidad máxima para este lote es 5.0\"\n  }\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "e7e0c95c-20d0-42c0-a390-a84d051decc6",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 400\", function () { pm.response.to.have.status(400); });"
-            ]
+            ],
+            "_lastExecutionId": "7d29e07e-42ad-48fb-8993-d2611a6d8d4b"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "3baec9d4-dc86-4707-a96a-de7b60538dab",
       "name": "409 · sin cosecha",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "lotes",
+            "{{loteSinCosechaId}}",
+            "cerrar-campania"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenJefe}}"
           }
         ],
-        "url": "{{baseUrl}}/lotes/{{loteSinCosechaId}}/cerrar-campania"
+        "method": "POST"
       },
+      "response": [
+        {
+          "name": "HTTP 409 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "lotes",
+                "{{loteSinCosechaId}}",
+                "cerrar-campania"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenJefe}}"
+              }
+            ],
+            "method": "POST"
+          },
+          "status": "Conflict",
+          "code": 409,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"timestamp\": \"2026-10-27T20:11:07.002879500\",\n  \"status\": 409,\n  \"error\": \"Conflict\",\n  \"message\": \"Registra al menos una cosecha antes de cerrar la campaña\",\n  \"path\": \"/api/v1/lotes/3/cerrar-campania\",\n  \"validationErrors\": {}\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "a8db2661-c5c0-4387-af82-cd9b74d91498",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 409\", function () { pm.response.to.have.status(409); });"
-            ]
+            ],
+            "_lastExecutionId": "d61f991e-69e1-4ab2-9697-0539868a4509"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "28437b39-4827-45c6-980b-a2d8cda43bbe",
       "name": "Crear labor",
       "request": {
-        "method": "POST",
+        "url": {
+          "path": [
+            "labores"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
@@ -371,7 +998,7 @@
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/labores",
+        "method": "POST",
         "body": {
           "mode": "raw",
           "raw": "{\n  \"loteId\": {{loteId}},\n  \"tipo\": \"RIEGO\",\n  \"fecha\": \"2026-10-27\",\n  \"cantidad\": 2,\n  \"observacion\": \"Demostración CRUD\"\n}",
@@ -382,24 +1009,83 @@
           }
         }
       },
+      "response": [
+        {
+          "name": "HTTP 201 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "labores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loteId\": {{loteId}},\n  \"tipo\": \"RIEGO\",\n  \"fecha\": \"2026-10-27\",\n  \"cantidad\": 2,\n  \"observacion\": \"Demostración CRUD\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 42,\n  \"loteId\": 2,\n  \"tipo\": \"RIEGO\",\n  \"fecha\": \"2026-10-27\",\n  \"responsable\": \"Lucía · Técnica de campo\",\n  \"cantidad\": 2.0,\n  \"observacion\": \"Demostración CRUD\",\n  \"pendiente\": false,\n  \"autorId\": 4,\n  \"registradoEn\": \"2026-10-28T01:11:07.1097281\"\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "4c646049-0325-41d9-98f2-9b2d111083a3",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
               "pm.collectionVariables.set(\"laborId\", pm.response.json().id);"
-            ]
+            ],
+            "_lastExecutionId": "2305e33d-ab72-4c84-821d-8bf933a13e74"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "d63343e2-9dad-41c2-8ac1-514d1c30ad52",
       "name": "Corregir labor",
       "request": {
-        "method": "PUT",
+        "url": {
+          "path": [
+            "labores",
+            "{{laborId}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
@@ -410,7 +1096,7 @@
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/labores/{{laborId}}",
+        "method": "PUT",
         "body": {
           "mode": "raw",
           "raw": "{\n  \"loteId\": {{loteId}},\n  \"tipo\": \"RIEGO\",\n  \"fecha\": \"2026-10-27\",\n  \"cantidad\": 3,\n  \"observacion\": \"Demostración CRUD\"\n}",
@@ -421,43 +1107,156 @@
           }
         }
       },
+      "response": [
+        {
+          "name": "HTTP 200 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "labores",
+                "{{laborId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenTecnico}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loteId\": {{loteId}},\n  \"tipo\": \"RIEGO\",\n  \"fecha\": \"2026-10-27\",\n  \"cantidad\": 3,\n  \"observacion\": \"Demostración CRUD\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 42,\n  \"loteId\": 2,\n  \"tipo\": \"RIEGO\",\n  \"fecha\": \"2026-10-27\",\n  \"responsable\": \"Lucía · Técnica de campo\",\n  \"cantidad\": 3.0,\n  \"observacion\": \"Demostración CRUD\",\n  \"pendiente\": false,\n  \"autorId\": 4,\n  \"registradoEn\": \"2026-10-28T01:11:07.109728\"\n}",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "11875a64-a043-4ff0-9c03-93299ad68090",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
-            ]
+            ],
+            "_lastExecutionId": "e9c23f51-7eea-41c8-a491-109217965ab3"
           }
         }
-      ],
-      "response": []
+      ]
     },
     {
+      "id": "7e3ed804-9e76-45f0-9f2d-ddbc2b597665",
       "name": "204 · eliminar labor",
       "request": {
-        "method": "DELETE",
+        "url": {
+          "path": [
+            "labores",
+            "{{laborId}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
         "header": [
           {
             "key": "Authorization",
             "value": "Bearer {{tokenJefe}}"
           }
         ],
-        "url": "{{baseUrl}}/labores/{{laborId}}"
+        "method": "DELETE"
       },
+      "response": [
+        {
+          "name": "HTTP 204 verificado",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "labores",
+                "{{laborId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenJefe}}"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [],
+          "body": "",
+          "_postman_previewlanguage": "json"
+        }
+      ],
       "event": [
         {
           "listen": "test",
           "script": {
+            "id": "0123d69c-28c9-4a89-b8ff-67708f92731d",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"HTTP 204\", function () { pm.response.to.have.status(204); });"
-            ]
+            ],
+            "_lastExecutionId": "f56b5c8f-94ce-487e-a39c-16e4f3caf889"
           }
         }
-      ],
-      "response": []
+      ]
     }
-  ]
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "any",
+      "value": "http://localhost:8081/api/v1",
+      "key": "baseUrl"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "tokenAlterado"
+    }
+  ],
+  "info": {
+    "_postman_id": "1a3becc6-88f9-4817-b5ae-0973c7ca5334",
+    "name": "AgroSierra Gutierrez · API y seguridad",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "name": "collection",
+  "_postman_variable_scope": "collection",
+  "_postman_exported_at": "2026-10-28T01:11:07.974Z",
+  "_postman_exported_using": "Newman/6.2.3"
 }

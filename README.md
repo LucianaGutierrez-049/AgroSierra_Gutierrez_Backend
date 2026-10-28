@@ -57,3 +57,7 @@ Oracle aislado en el puerto 1522; API en 8081.
 ## Oracle comprobado
 
 [Resultados de ejecución](docs/BACKEND_ORACLE_VERIFICADO.md).
+
+## Cierre de entrega
+
+[Verificación y evidencias finales](docs/CIERRE_UNIDAD2.md).
