@@ -1,0 +1,409 @@
+{
+  "ejecutor": "Newman 6.2.3",
+  "peticiones": 15,
+  "aserciones": 15,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "Login Técnico",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/auth/login",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "token": "<token omitido>",
+        "usuario": "tecnico1",
+        "nombre": "Lucía · Técnica de campo",
+        "rol": "TECNICO",
+        "privilegios": [
+          "LABOR_EDITAR",
+          "LOTE_LEER",
+          "LABOR_CREAR",
+          "LABOR_LEER"
+        ],
+        "usuarioId": 4,
+        "expiraEn": 1793153464000,
+        "edicionPropia": true
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Login Jefe",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/auth/login",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "token": "<token omitido>",
+        "usuario": "jefe1",
+        "nombre": "Jefatura de campo",
+        "rol": "JEFE_CAMPO",
+        "privilegios": [
+          "LABOR_EDITAR",
+          "LABOR_ELIMINAR",
+          "LOTE_LEER",
+          "LABOR_CREAR",
+          "LABOR_LEER",
+          "CAMPANIA_CERRAR"
+        ],
+        "usuarioId": 5,
+        "expiraEn": 1793153464000,
+        "edicionPropia": false
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Login Administrador",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/auth/login",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "token": "<token omitido>",
+        "usuario": "admin",
+        "nombre": "Administración AgroSierra",
+        "rol": "ADMINISTRADOR",
+        "privilegios": [
+          "LOTE_LEER",
+          "LABOR_LEER",
+          "USUARIO_GESTIONAR"
+        ],
+        "usuarioId": 6,
+        "expiraEn": 1793153465000,
+        "edicionPropia": false
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "401 · sin token",
+      "metodo": "GET",
+      "url": "http://localhost:8081/api/v1/lotes",
+      "codigo": 401,
+      "estado": "Unauthorized",
+      "respuesta": {
+        "timestamp": "2026-10-27T20:11:05.502074400",
+        "status": 401,
+        "error": "Unauthorized",
+        "message": "La sesión no es válida o ha vencido",
+        "path": "/api/v1/lotes",
+        "validationErrors": {}
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "401 · token alterado",
+      "metodo": "GET",
+      "url": "http://localhost:8081/api/v1/lotes",
+      "codigo": 401,
+      "estado": "Unauthorized",
+      "respuesta": {
+        "timestamp": "2026-10-27T20:11:05.609681900",
+        "status": 401,
+        "error": "Unauthorized",
+        "message": "La sesión no es válida o ha vencido",
+        "path": "/api/v1/lotes",
+        "validationErrors": {}
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Usuario actual",
+      "metodo": "GET",
+      "url": "http://localhost:8081/api/v1/usuarios/me",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "id": 4,
+        "usuario": "tecnico1",
+        "nombre": "Lucía · Técnica de campo",
+        "rol": "TECNICO",
+        "privilegios": [
+          "LABOR_EDITAR",
+          "LOTE_LEER",
+          "LABOR_CREAR",
+          "LABOR_LEER"
+        ]
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Lotes paginados",
+      "metodo": "GET",
+      "url": "http://localhost:8081/api/v1/lotes",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "contenido": [
+          {
+            "id": 2,
+            "codigo": "LOT-001",
+            "nombre": "Las Palmeras",
+            "hectareas": 2.0,
+            "cultivo": "Papa",
+            "valle": "Mantaro",
+            "campaniaCerrada": false,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 3,
+            "codigo": "LOT-002",
+            "nombre": "El Mirador",
+            "hectareas": 2.5,
+            "cultivo": "Maíz",
+            "valle": "Urubamba",
+            "campaniaCerrada": false,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 4,
+            "codigo": "LOT-003",
+            "nombre": "Los Eucaliptos",
+            "hectareas": 3.0,
+            "cultivo": "Quinua",
+            "valle": "Colca",
+            "campaniaCerrada": false,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 5,
+            "codigo": "LOT-004",
+            "nombre": "La Esperanza",
+            "hectareas": 3.5,
+            "cultivo": "Haba",
+            "valle": "Mantaro",
+            "campaniaCerrada": false,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 6,
+            "codigo": "LOT-005",
+            "nombre": "Valle Verde",
+            "hectareas": 4.0,
+            "cultivo": "Papa",
+            "valle": "Urubamba",
+            "campaniaCerrada": false,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 7,
+            "codigo": "LOT-006",
+            "nombre": "Los Pinos",
+            "hectareas": 4.5,
+            "cultivo": "Maíz",
+            "valle": "Colca",
+            "campaniaCerrada": false,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 8,
+            "codigo": "LOT-007",
+            "nombre": "El Retiro",
+            "hectareas": 5.0,
+            "cultivo": "Quinua",
+            "valle": "Mantaro",
+            "campaniaCerrada": true,
+            "dosisMaximaPorHectarea": 2.5
+          },
+          {
+            "id": 9,
+            "codigo": "LOT-008",
+            "nombre": "Santa Rosa",
+            "hectareas": 5.5,
+            "cultivo": "Haba",
+            "valle": "Urubamba",
+            "campaniaCerrada": true,
+            "dosisMaximaPorHectarea": 2.5
+          }
+        ],
+        "pagina": 0,
+        "tamanio": 100,
+        "totalElementos": 8,
+        "totalPaginas": 1,
+        "ultima": true
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Detalle lote",
+      "metodo": "GET",
+      "url": "http://localhost:8081/api/v1/lotes/2",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "id": 2,
+        "codigo": "LOT-001",
+        "nombre": "Las Palmeras",
+        "hectareas": 2.0,
+        "cultivo": "Papa",
+        "valle": "Mantaro",
+        "campaniaCerrada": false,
+        "dosisMaximaPorHectarea": 2.5
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Labores lote",
+      "metodo": "GET",
+      "url": "http://localhost:8081/api/v1/lotes/2/labores",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "contenido": [
+          {
+            "id": 41,
+            "loteId": 2,
+            "tipo": "RIEGO",
+            "fecha": "2026-10-28",
+            "responsable": "Lucía · Técnica de campo",
+            "cantidad": 1.0,
+            "observacion": "Evidencia offline Gutierrez 2026",
+            "pendiente": false,
+            "autorId": 4,
+            "registradoEn": "2026-10-28T01:06:05.051479"
+          },
+          {
+            "id": 4,
+            "loteId": 2,
+            "tipo": "RIEGO",
+            "fecha": "2026-10-27",
+            "responsable": "Lucía · Técnica de campo",
+            "cantidad": 10.0,
+            "observacion": "Labor de campaña registrada en Las Palmeras",
+            "pendiente": false,
+            "autorId": 4,
+            "registradoEn": "2026-10-27T21:05:30.822192"
+          },
+          {
+            "id": 5,
+            "loteId": 2,
+            "tipo": "FUMIGACION",
+            "fecha": "2026-10-26",
+            "responsable": "Jefatura de campo",
+            "cantidad": 2.0,
+            "observacion": "Labor de campaña registrada en Las Palmeras",
+            "pendiente": false,
+            "autorId": 5,
+            "registradoEn": "2026-10-27T21:05:33.229529"
+          },
+          {
+            "id": 6,
+            "loteId": 2,
+            "tipo": "COSECHA",
+            "fecha": "2026-10-25",
+            "responsable": "Lucía · Técnica de campo",
+            "cantidad": 10.0,
+            "observacion": "Labor de campaña registrada en Las Palmeras",
+            "pendiente": false,
+            "autorId": 4,
+            "registradoEn": "2026-10-27T21:05:35.807183"
+          }
+        ],
+        "pagina": 0,
+        "tamanio": 20,
+        "totalElementos": 4,
+        "totalPaginas": 1,
+        "ultima": true
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "403 · técnico intenta cerrar campaña",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/lotes/3/cerrar-campania",
+      "codigo": 403,
+      "estado": "Forbidden",
+      "respuesta": {
+        "timestamp": "2026-10-27T20:11:06.291377500",
+        "status": 403,
+        "error": "Forbidden",
+        "message": "No tienes el privilegio necesario",
+        "path": "/api/v1/lotes/3/cerrar-campania",
+        "validationErrors": {}
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "400 · dosis excedida",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/labores",
+      "codigo": 400,
+      "estado": "Bad Request",
+      "respuesta": {
+        "timestamp": "2026-10-27T20:11:06.644610700",
+        "status": 400,
+        "error": "Bad Request",
+        "message": "La fumigación supera la dosis permitida",
+        "path": "/api/v1/labores",
+        "validationErrors": {
+          "cantidad": "La cantidad máxima para este lote es 5.0"
+        }
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "409 · sin cosecha",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/lotes/3/cerrar-campania",
+      "codigo": 409,
+      "estado": "Conflict",
+      "respuesta": {
+        "timestamp": "2026-10-27T20:11:07.002879500",
+        "status": 409,
+        "error": "Conflict",
+        "message": "Registra al menos una cosecha antes de cerrar la campaña",
+        "path": "/api/v1/lotes/3/cerrar-campania",
+        "validationErrors": {}
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Crear labor",
+      "metodo": "POST",
+      "url": "http://localhost:8081/api/v1/labores",
+      "codigo": 201,
+      "estado": "Created",
+      "respuesta": {
+        "id": 42,
+        "loteId": 2,
+        "tipo": "RIEGO",
+        "fecha": "2026-10-27",
+        "responsable": "Lucía · Técnica de campo",
+        "cantidad": 2.0,
+        "observacion": "Demostración CRUD",
+        "pendiente": false,
+        "autorId": 4,
+        "registradoEn": "2026-10-28T01:11:07.1097281"
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "Corregir labor",
+      "metodo": "PUT",
+      "url": "http://localhost:8081/api/v1/labores/42",
+      "codigo": 200,
+      "estado": "OK",
+      "respuesta": {
+        "id": 42,
+        "loteId": 2,
+        "tipo": "RIEGO",
+        "fecha": "2026-10-27",
+        "responsable": "Lucía · Técnica de campo",
+        "cantidad": 3.0,
+        "observacion": "Demostración CRUD",
+        "pendiente": false,
+        "autorId": 4,
+        "registradoEn": "2026-10-28T01:11:07.109728"
+      },
+      "correcto": true
+    },
+    {
+      "nombre": "204 · eliminar labor",
+      "metodo": "DELETE",
+      "url": "http://localhost:8081/api/v1/labores/42",
+      "codigo": 204,
+      "estado": "No Content",
+      "respuesta": null,
+      "correcto": true
+    }
+  ]
+}
