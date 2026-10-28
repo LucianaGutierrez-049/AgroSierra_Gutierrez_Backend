@@ -1,0 +1,170 @@
+[
+  {
+    "prueba": "Login tecnico1",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Login jefe1",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Login admin",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Credenciales incorrectas",
+    "esperado": 401,
+    "obtenido": 401,
+    "correcto": true
+  },
+  {
+    "prueba": "Token ausente",
+    "esperado": 401,
+    "obtenido": 401,
+    "correcto": true
+  },
+  {
+    "prueba": "Firma JWT alterada",
+    "esperado": 401,
+    "obtenido": 401,
+    "correcto": true
+  },
+  {
+    "prueba": "Usuario actual",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Lotes paginados",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Filtro de campaña",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Recurso inexistente",
+    "esperado": 404,
+    "obtenido": 404,
+    "correcto": true
+  },
+  {
+    "prueba": "Privilegio de cierre",
+    "esperado": 403,
+    "obtenido": 403,
+    "correcto": true
+  },
+  {
+    "prueba": "Administrador no registra labores",
+    "esperado": 403,
+    "obtenido": 403,
+    "correcto": true
+  },
+  {
+    "prueba": "RN-01 campaña cerrada",
+    "esperado": 409,
+    "obtenido": 409,
+    "correcto": true
+  },
+  {
+    "prueba": "RN-04 dosis excesiva",
+    "esperado": 400,
+    "obtenido": 400,
+    "correcto": true
+  },
+  {
+    "prueba": "Crear labor",
+    "esperado": 201,
+    "obtenido": 201,
+    "correcto": true
+  },
+  {
+    "prueba": "Creación idempotente",
+    "esperado": 201,
+    "obtenido": 201,
+    "correcto": true
+  },
+  {
+    "prueba": "Editar labor propia",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "RN-02 plazo de 24 horas",
+    "esperado": 403,
+    "obtenido": 403,
+    "correcto": true
+  },
+  {
+    "prueba": "Jefe corrige fuera del plazo",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Jefe registra labor",
+    "esperado": 201,
+    "obtenido": 201,
+    "correcto": true
+  },
+  {
+    "prueba": "RN-02 autor ajeno",
+    "esperado": 403,
+    "obtenido": 403,
+    "correcto": true
+  },
+  {
+    "prueba": "Técnico no elimina",
+    "esperado": 403,
+    "obtenido": 403,
+    "correcto": true
+  },
+  {
+    "prueba": "RN-03 cierre sin cosecha",
+    "esperado": 409,
+    "obtenido": 409,
+    "correcto": true
+  },
+  {
+    "prueba": "Registrar cosecha",
+    "esperado": 201,
+    "obtenido": 201,
+    "correcto": true
+  },
+  {
+    "prueba": "Cerrar campaña con cosecha",
+    "esperado": 200,
+    "obtenido": 200,
+    "correcto": true
+  },
+  {
+    "prueba": "Eliminar sin cuerpo",
+    "esperado": 204,
+    "obtenido": 204,
+    "correcto": true
+  },
+  {
+    "prueba": "Eliminar sin cuerpo",
+    "esperado": 204,
+    "obtenido": 204,
+    "correcto": true
+  },
+  {
+    "prueba": "Eliminar sin cuerpo",
+    "esperado": 204,
+    "obtenido": 204,
+    "correcto": true
+  }
+]

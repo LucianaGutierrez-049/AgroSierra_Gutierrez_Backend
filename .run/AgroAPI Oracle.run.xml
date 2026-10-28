@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="AgroAPI Oracle" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="pe.upeu.agrosierra_gutierrez.AgroApiGutierrezApplicationKt" />
+    <module name="AgroAPI_Gutierrez" />
+    <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=oracle" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="VM_PARAMETERS" value="-Xmx512m" />
+    <method v="2"><option name="Make" enabled="true" /></method>
+  </configuration>
+</component>

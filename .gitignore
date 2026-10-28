@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Datos locales y resultados de verificación
+/data/
+*.mv.db
+*.trace.db
+*.log
+/.kotlin/
+
+.env
